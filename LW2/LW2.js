@@ -1,8 +1,8 @@
 (function() {
-    // Масив імен
+    // Array of names
     var names = ["John", "Paul", "George", "Ringo", "Jim", "Tom", "Jack", "Alex", "Julia"];
 
-    // Створення об'єкта helloSpeaker
+    // Create the helloSpeaker object
     var helloSpeaker = (function() {
         var speakWord = "Hello";
         return {
@@ -12,7 +12,7 @@
         };
     })();
 
-    // Створення об'єкта goodbyeSpeaker
+    // Create the goodbyeSpeaker object
     var goodbyeSpeaker = (function() {
         var speakWord = "Goodbye";
         return {
@@ -22,10 +22,13 @@
         };
     })();
 
-    // Функція для обробки імен
+    // Function to process the names array
     function processNames(namesArray) {
         for (var i = 0; i < namesArray.length; i++) {
+            // Get the first letter of the name and convert it to lowercase
             var firstLetter = namesArray[i].charAt(0).toLowerCase();
+            
+            // If the first letter is 'j', use goodbyeSpeaker, otherwise use helloSpeaker
             if (firstLetter === 'j') {
                 goodbyeSpeaker.speak(namesArray[i]);
             } else {
@@ -34,38 +37,45 @@
         }
     }
 
-    // Викликаємо функцію для обробки імен
+    // Call the processNames function to process the array of names
     processNames(names);
 
-    // Додатковий функціонал: селекція за останньою літерою імені
+    // Additional functionality: select names by the last letter
     console.log("\nSelection by Last Letter:");
     function processNamesByLastLetter(namesArray, targetLetter) {
         for (var i = 0; i < namesArray.length; i++) {
+            // Get the last letter of the name and convert it to lowercase
             var lastLetter = namesArray[i].charAt(namesArray[i].length - 1).toLowerCase();
+            
+            // If the last letter matches the targetLetter, log the name
             if (lastLetter === targetLetter) {
                 console.log("Selected by last letter '" + targetLetter + "': " + namesArray[i]);
             }
         }
     }
 
-    // Використовуємо додаткову селекцію
-    processNamesByLastLetter(names, 'a'); // Вибираємо імена, що закінчуються на 'a'
+    // Call the processNamesByLastLetter function to select names ending with 'a'
+    processNamesByLastLetter(names, 'a'); // Select names that end with 'a'
 
-    // Додатковий функціонал: селекція за сумою ASCII-кодів
+    // Additional functionality: select names by ASCII sum
     console.log("\nSelection by ASCII sum:");
     function processNamesByAsciiSum(namesArray, threshold) {
         for (var i = 0; i < namesArray.length; i++) {
             var asciiSum = 0;
+            
+            // Calculate the sum of ASCII codes of each character in the name
             for (var j = 0; j < namesArray[i].length; j++) {
                 asciiSum += namesArray[i].charCodeAt(j);
             }
+            
+            // If the ASCII sum is greater than the threshold, log the name and its ASCII sum
             if (asciiSum > threshold) {
                 console.log("Selected by ASCII sum > " + threshold + ": " + namesArray[i] + " (Sum: " + asciiSum + ")");
             }
         }
     }
 
-    // Використовуємо селекцію за ASCII-кодом
-    processNamesByAsciiSum(names, 400); // Вибираємо імена, сума ASCII кодів яких більша за 400
+    // Call the processNamesByAsciiSum function to select names with ASCII sum greater than 400
+    processNamesByAsciiSum(names, 400); // Select names with an ASCII sum greater than 400
 
 })();
