@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Футболка",
+    "shortname": "tshirt",
+    "description": "Бавовняна футболка.",
+    "price": "$20",
+    "image": "https://place-hold.it/200x200"
+  },
+  {
+    "id": 2,
+    "name": "Джинси",
+    "shortname": "jeans",
+    "description": "Класичні джинси.",
+    "price": "$40",
+    "image": "https://place-hold.it/200x200"
+  }
+]
+

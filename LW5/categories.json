@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "Електроніка",
+    "shortname": "electronics",
+    "notes": "Сучасні гаджети для вас."
+  },
+  {
+    "id": 2,
+    "name": "Меблі",
+    "shortname": "furniture",
+    "notes": "Зручні та стильні меблі."
+  },
+  {
+    "id": 3,
+    "name": "Одяг",
+    "shortname": "clothing",
+    "notes": "Мода для всіх."
+  }
+]
+

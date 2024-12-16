@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Стіл",
+    "shortname": "table",
+    "description": "Дерев'яний стіл.",
+    "price": "$150",
+    "image": "https://place-hold.it/200x200"
+  },
+  {
+    "id": 2,
+    "name": "Стілець",
+    "shortname": "chair",
+    "description": "Комфортний стілець.",
+    "price": "$50",
+    "image": "https://place-hold.it/200x200"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Смартфон",
+    "shortname": "smartphone",
+    "description": "Новітній смартфон.",
+    "price": "$699",
+    "image": "https://place-hold.it/200x200"
+  },
+  {
+    "id": 2,
+    "name": "Ноутбук",
+    "shortname": "laptop",
+    "description": "Потужний ноутбук.",
+    "price": "$999",
+    "image": "https://place-hold.it/200x200"
+  }
+]
