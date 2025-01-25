@@ -1,4 +1,5 @@
- if (type1 === "leg" && type2 === "hypotenuse") {
+function triangle(value1, type1, value2, type2) {
+    if (type1 === "leg" && type2 === "hypotenuse") {
         const a = value1;
         const c = value2;
         const b = Math.sqrt(c * c - a * a);
@@ -15,11 +16,10 @@
             }
         };
     }
-    return { status: "failed", message: "Unsupported type combination." 
-};
+    return { status: "failed", message: "Unsupported type combination." };
+}
 
-
-function calculateTriangle() {
+function calculateTriangle() { 
     const value1 = parseFloat(document.getElementById('value1').value);
     const type1 = document.getElementById('type1').value;
     const value2 = parseFloat(document.getElementById('value2').value);
