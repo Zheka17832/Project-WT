@@ -66,5 +66,16 @@ function calculateTriangle() {
     const type2 = document.getElementById('type2').value;
 
     const result = triangle(value1, type1, value2, type2);
-    document.getElementById('result').innerText = result;
+    let displayText = '';
+    if (result === "failed") {
+        displayText = "Calculation failed. Please check your inputs.";
+    } else {
+        displayText = `Results:<br>
+                       c (hypotenuse): ${result.c.toFixed(2)}<br>
+                       a (leg): ${result.a.toFixed(2)}<br>
+                       b (leg): ${result.b.toFixed(2)}<br>
+                       alpha (angle opposite to a): ${result.alpha.toFixed(2)} degrees<br>
+                       beta (angle opposite to b): ${result.beta.toFixed(2)} degrees`;
+    }
+    document.getElementById('result').innerHTML = displayText;
 }
