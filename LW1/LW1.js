@@ -59,4 +59,12 @@ function triangle(value1, type1, value2, type2) {
     return "success";
 }
 
-console.log(triangle(7, "leg", 18, "hypotenuse"))
+function calculateTriangle() {
+    const value1 = parseFloat(document.getElementById('value1').value);
+    const type1 = document.getElementById('type1').value;
+    const value2 = parseFloat(document.getElementById('value2').value);
+    const type2 = document.getElementById('type2').value;
+
+    const result = triangle(value1, type1, value2, type2);
+    document.getElementById('result').innerText = result;
+}
