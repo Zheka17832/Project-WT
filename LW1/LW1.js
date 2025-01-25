@@ -1,14 +1,13 @@
 function triangle(value1, type1, value2, type2) {
-
     const validTypes = ['leg', 'hypotenuse', 'adjacent angle', 'opposite angle', 'angle'];
     if (!validTypes.includes(type1) || !validTypes.includes(type2)) {
         console.log("Invalid type input. Please try again.");
-        return "failed";
+        return { status: "failed", message: "Invalid type input. Please try again." };
     }
 
     if (value1 <= 0 || value2 <= 0) {
         console.log("Zero or negative input");
-        return "Zero or negative input";
+        return { status: "failed", message: "Zero or negative input" };
     }
 
     let a, b, c, alpha, beta;
@@ -18,7 +17,7 @@ function triangle(value1, type1, value2, type2) {
         c = value2;
         if (a >= c) {
             console.log("Leg cannot be greater than or equal to the hypotenuse.");
-            return "Leg cannot be greater than or equal to the hypotenuse.";
+            return { status: "failed", message: "Leg cannot be greater than or equal to the hypotenuse." };
         }
         b = Math.sqrt(c * c - a * a);
         alpha = Math.asin(a / c) * (180 / Math.PI);
@@ -30,7 +29,7 @@ function triangle(value1, type1, value2, type2) {
         a = value2;
         if (alpha <= 0 || alpha >= 90) {
             console.log("Angle must be acute.");
-            return "Angle must be acute.";
+            return { status: "failed", message: "Angle must be acute." };
         }
         c = a / Math.sin(alpha * Math.PI / 180);
         b = Math.sqrt(c * c - a * a);
@@ -40,23 +39,26 @@ function triangle(value1, type1, value2, type2) {
         c = value2;
         if (alpha <= 0 || alpha >= 90) {
             console.log("Angle must be acute.");
-            return "Angle must be acute.";
+            return { status: "failed", message: "Angle must be acute." };
         }
         a = c * Math.sin(alpha * Math.PI / 180);
         b = c * Math.cos(alpha * Math.PI / 180);
         beta = 90 - alpha;
     } else {
         console.log("Invalid or unsupported type combination.");
-        return "failed";
+        return { status: "failed", message: "Invalid or unsupported type combination." };
     }
 
-    console.log(`c (hypotenuse): ${c}`);
-    console.log(`a (leg): ${a}`);
-    console.log(`b (leg): ${b}`);
-    console.log(`alpha (angle opposite to a): ${alpha} degrees`);
-    console.log(`beta (angle opposite to b): ${beta} degrees`);
-
-    return "success";
+    return {
+        status: "success",
+        results: {
+            c: c,
+            a: a,
+            b: b,
+            alpha: alpha,
+            beta: beta
+        }
+    };
 }
 
 function calculateTriangle() {
