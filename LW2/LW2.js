@@ -1,81 +1,59 @@
 (function() {
-    // Array of names
     var names = ["John", "Paul", "George", "Ringo", "Jim", "Tom", "Jack", "Alex", "Julia"];
 
-    // Create the helloSpeaker object
     var helloSpeaker = (function() {
-        var speakWord = "Hello";
+        var speakWord = "Привіт";
         return {
             speak: function(name) {
-                console.log(speakWord + " " + name);
+                return speakWord + " " + name;
             }
         };
     })();
 
-    // Create the goodbyeSpeaker object
     var goodbyeSpeaker = (function() {
-        var speakWord = "Goodbye";
+        var speakWord = "Прощавай";
         return {
             speak: function(name) {
-                console.log(speakWord + " " + name);
+                return speakWord + " " + name;
             }
         };
     })();
 
-    // Function to process the names array
-    function processNames(namesArray) {
-        for (var i = 0; i < namesArray.length; i++) {
-            // Get the first letter of the name and convert it to lowercase
-            var firstLetter = namesArray[i].charAt(0).toLowerCase();
-            
-            // If the first letter is 'j', use goodbyeSpeaker, otherwise use helloSpeaker
+    window.processNames = function() {
+        var output = '';
+        for (var i = 0; i < names.length; i++) {
+            var firstLetter = names[i].charAt(0).toLowerCase();
             if (firstLetter === 'j') {
-                goodbyeSpeaker.speak(namesArray[i]);
+                output += goodbyeSpeaker.speak(names[i]) + "<br>";
             } else {
-                helloSpeaker.speak(namesArray[i]);
+                output += helloSpeaker.speak(names[i]) + "<br>";
             }
         }
-    }
+        document.getElementById('results').innerHTML = output;
+    };
 
-    // Call the processNames function to process the array of names
-    processNames(names);
-
-    // Additional functionality: select names by the last letter
-    console.log("\nSelection by Last Letter:");
-    function processNamesByLastLetter(namesArray, targetLetter) {
-        for (var i = 0; i < namesArray.length; i++) {
-            // Get the last letter of the name and convert it to lowercase
-            var lastLetter = namesArray[i].charAt(namesArray[i].length - 1).toLowerCase();
-            
-            // If the last letter matches the targetLetter, log the name
+    window.processNamesByLastLetter = function(targetLetter) {
+        var output = "Вибір за останньою літерою:<br>";
+        for (var i = 0; i < names.length; i++) {
+            var lastLetter = names[i].charAt(names[i].length - 1).toLowerCase();
             if (lastLetter === targetLetter) {
-                console.log("Selected by last letter '" + targetLetter + "': " + namesArray[i]);
+                output += "Вибрано за останньою літерою '" + targetLetter + "': " + names[i] + "<br>";
             }
         }
-    }
+        document.getElementById('results').innerHTML = output;
+    };
 
-    // Call the processNamesByLastLetter function to select names ending with 'a'
-    processNamesByLastLetter(names, 'a'); // Select names that end with 'a'
-
-    // Additional functionality: select names by ASCII sum
-    console.log("\nSelection by ASCII sum:");
-    function processNamesByAsciiSum(namesArray, threshold) {
-        for (var i = 0; i < namesArray.length; i++) {
+    window.processNamesByAsciiSum = function(threshold) {
+        var output = "Вибір за сумою ASCII:<br>";
+        for (var i = 0; i < names.length; i++) {
             var asciiSum = 0;
-            
-            // Calculate the sum of ASCII codes of each character in the name
-            for (var j = 0; j < namesArray[i].length; j++) {
-                asciiSum += namesArray[i].charCodeAt(j);
+            for (var j = 0; j < names[i].length; j++) {
+                asciiSum += names[i].charCodeAt(j);
             }
-            
-            // If the ASCII sum is greater than the threshold, log the name and its ASCII sum
             if (asciiSum > threshold) {
-                console.log("Selected by ASCII sum > " + threshold + ": " + namesArray[i] + " (Sum: " + asciiSum + ")");
+                output += "Вибрано за сумою ASCII > " + threshold + ": " + names[i] + " (Сума: " + asciiSum + ")<br>";
             }
         }
-    }
-
-    // Call the processNamesByAsciiSum function to select names with ASCII sum greater than 400
-    processNamesByAsciiSum(names, 400); // Select names with an ASCII sum greater than 400
-
+        document.getElementById('results').innerHTML = output;
+    };
 })();
