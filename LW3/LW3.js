@@ -110,10 +110,9 @@ const defaultTriangle = Triangular();
 const customTriangle1 = Triangular(5, 12, 13);
 const customTriangle2 = Triangular(6, 8, 10);
 
-console.log("Default triangle:", defaultTriangle());
-console.log("Custom triangle 1:", customTriangle1());
-console.log("Custom triangle 2:", customTriangle2());
-
+console.log("Default Triangle:", defaultTriangle);
+console.log("Custom Triangle 1:", customTriangle1);
+console.log("Custom Triangle 2:", customTriangle2);
 
 // 1.2.28
 const multiplyPiBy2 = PiMultiplier(2);
