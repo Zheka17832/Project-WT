@@ -4,7 +4,7 @@ class Square {
     }
 
     static help() {
-        console.log("Квадрат - це чотирикутник, у якого всі сторони рівні, а всі кути дорівнюють 90 градусам.");
+        console.log("A square is a regular quadrilateral, which means that it has four equal sides and four equal angles (90-degree angles).");
     }
 
     length() {
@@ -16,11 +16,10 @@ class Square {
     }
 
     info() {
-        console.log(`Інформація про квадрат:
-    Довжини сторін: ${this.a}, ${this.a}, ${this.a}, ${this.a}
-    Величини кутів: 90°
-    Сума довжин сторін: ${4 * this.a}
-    Площа: ${this.a * this.a});`);
+        console.log(`Each side of the square is ${this.a}`);
+        console.log(`Each angle of the square is 90 degrees`);
+        this.length();
+        this.square();
     }
 }
 
