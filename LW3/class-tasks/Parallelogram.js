@@ -1,4 +1,4 @@
-import { Rectangle } from './Rectangle.js';
+import Rectangle from './Rectangle.js';
 
 class Parallelogram extends Rectangle {
     constructor(a, b, alpha, beta) {
@@ -26,3 +26,5 @@ class Parallelogram extends Rectangle {
         this.square();
     }
 }
+
+export default Parallelogram;
