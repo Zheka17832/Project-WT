@@ -1,49 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lab3</title>
+    <script type="module" src="LW3.js"></script>
 </head>
 <body>
-    <script type="module" src="object-tasks.js"></script>
-    <script type="module">
-    import Square from './class-tasks/Square.js';
-    import Rectangle from './class-tasks/Rectangle.js';
-    import Rhombus from './class-tasks/Rhombus.js';
-    import Parallelogram from './class-tasks/Parallelogram.js';
-    import Triangular from './class-tasks/Triangular.js';
-    import { PaintBlue, PaintRed, PaintYellow } from './function-tasks/Painter.js';
-    import PiMultiplier from "./function-tasks/PiMultiplier.js";
-
-    Square.help();
-    Rectangle.help();
-    Rhombus.help();
-    Parallelogram.help();
-
-    const square = new Square(5);
-    const rectangle = new Rectangle(5, 10);
-    const rhombus = new Rhombus(6, 120, 60);
-    const parallelogram = new Parallelogram(5, 10, 120, 60);
-
-    square.info();
-    rectangle.info();
-    rhombus.info();
-    parallelogram.info();
-
-    console.log(Triangular());
-    console.log(Triangular(2, 10, 16));
-    console.log(Triangular(13, 40, 54));
-
-    const multiplyBy2 = PiMultiplier(2);
-    const multiplyByTwoThirds = PiMultiplier(2 / 3);
-    const divideBy2 = PiMultiplier(0.5);
-    console.log(multiplyBy2());
-    console.log(multiplyByTwoThirds());
-    console.log(divideBy2());
-
-    PaintBlue({ maxSpeed: 280, type: "Sportcar", color: "magenta" });
-    PaintRed({ type: "Truck", avgSpeed: 90, loadCapacity: 2400 });
-    PaintYellow({ maxSpeed: 180, color: "purple", isCar: true });
-    </script>
+<h1>Lab Work 3 Output</h1>
+<h2>Please check the logs</h2>
+<div id="output"></div>
 </body>
 </html>

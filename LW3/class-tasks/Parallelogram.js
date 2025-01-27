@@ -8,23 +8,22 @@ class Parallelogram extends Rectangle {
     }
 
     static help() {
-        console.log("Паралелограм — це чотирикутник, протилежні сторони якого рівні, а протилежні кути — рівні.");
+        console.log("A parallelogram is a quadrilateral with opposite sides parallel. It has opposite angles equal.");
     }
 
     length() {
-        return 2 * (this.a + this.b);
+        console.log(`The perimeter of the parallelogram is ${2 * (this.a + this.b)}`);
     }
 
     square() {
-        return this.a * this.b * Math.sin(this.alpha * (Math.PI / 180));
+        console.log(`The area of the parallelogram is ${this.a * this.b * Math.sin(this.alpha * Math.PI / 180)}`);
     }
 
     info() {
-        console.log(`Інформація про паралелограм:
-    Довжини сторін: ${this.a}, ${this.b}, ${this.a}, ${this.b}
-    Величини кутів: ${this.alpha}°,  ${this.beta}°, ${this.alpha}°,  ${this.beta}°
-    Сума довжин сторін: ${2 * (this.a + this.b)}
-    Площа: ${this.a * this.b * Math.sin(this.alpha * (Math.PI / 180))});`);
+        console.log(`Sides of the parallelogram are ${this.a} and ${this.b}`);
+        console.log(`Angles of the parallelogram are ${this.alpha} degrees and ${this.beta} degrees`);
+        this.length();
+        this.square();
     }
 }
 

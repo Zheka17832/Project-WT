@@ -1,57 +1,30 @@
-// Імпортуємо клас Square
 import Square from './Square.js';
 
 class Rhombus extends Square {
     constructor(a, alpha, beta) {
         super(a);
-        this._alpha = alpha;
-        this._beta = beta;
-    }
-
-    get alpha() {
-        return this._alpha;
-    }
-
-    set alpha(value) {
-        if (value > 0 && value < 180) {
-            this._alpha = value;
-        } else {
-            console.error("Альфа-кут має бути від 0 до 180 градусів.");
-        }
-    }
-
-    get beta() {
-        return this._beta;
-    }
-
-    set beta(value) {
-        if (value > 0 && value < 180) {
-            this._beta = value;
-        } else {
-            console.error("Бета-кут має бути від 0 до 180 градусів.");
-        }
+        this.alpha = alpha;
+        this.beta = beta;
     }
 
     static help() {
-        console.log("Ромб — це чотирикутник, у якого всі сторони рівні, але протилежні кути рівні.");
+        console.log("A rhombus is a type of polygon that is a quadrilateral with all sides having equal length.");
     }
 
     length() {
-        return 4 * this.a;
+        console.log(`The perimeter of the rhombus is ${4 * this.a}`);
     }
 
     square() {
-        return this.a * this.a * Math.sin(this._alpha * (Math.PI / 180));
+        console.log(`The area of the rhombus is ${this.a * this.a * Math.sin(this.alpha * Math.PI / 180)}`);
     }
 
     info() {
-        console.log(`Інформація про ромб:
-    Довжини сторін: ${this.a}, ${this.a}, ${this.a}, ${this.a}
-    Величини кутів: ${this.alpha}°, ${this.beta}°, ${this.alpha}°, ${this.beta}°
-    Сума довжин сторін: ${4 * this.a}
-    Площа: ${this.a * this.a * Math.sin(this._alpha * (Math.PI / 180))});`);
+        console.log(`Each side of the rhombus is ${this.a}`);
+        console.log(`Angles of the rhombus are ${this.alpha} degrees and ${this.beta} degrees`);
+        this.length();
+        this.square();
     }
 }
 
 export default Rhombus;
-

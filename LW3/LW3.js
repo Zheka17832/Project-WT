@@ -1,62 +1,59 @@
-// Завдання 1.2.3
+import Square from './class-tasks/Square.js';
+import Rectangle from './class-tasks/Rectangle.js';
+import Rhombus from './class-tasks/Rhombus.js';
+import Parallelogram from './class-tasks/Parallelogram.js';
+import Triangular from './class-tasks/Triangular.js';
+import PiMultiplier from "./function-tasks/PiMultiplier.js";
+import Painter from "./function-tasks/Painter.js";
+
 var car1 = new Object();
-car1.color = "blue"; // довільний колір
-car1.maxSpeed = 120; // довільне число
+car1.color = "red";
+car1.maxSpeed = 120;
 car1.driver = {
-    name: "Ім'я Прізвище",
+    name: "John Doe",
     category: "C",
     personalLimitations: "No driving at night"
 };
 car1.tuning = true;
-car1["number of accidents"] = 0;
+car1.numberOfAccidents = 0;
 
-// Завдання 1.2.4
+// 1.2.4
 var car2 = {
-    color: "red",
+    color: "blue",
     maxSpeed: 150,
     driver: {
-        name: "Ім'я Прізвище",
+        name: "John Doe",
         category: "B",
         personalLimitations: null
     },
     tuning: false,
-    "number of accidents": 2
+    numberOfAccidents: 2
 };
 
-// Завдання 1.2.5
-car1.drive = function () {
+// 1.2.5
+car1.drive = function() {
     console.log("I am not driving at night");
 };
-car1.drive();
 
-// Завдання 1.2.6
-car2.drive = function () {
+// 1.2.6
+car2.drive = function() {
     console.log("I can drive anytime");
 };
+
+car1.drive();
 car2.drive();
 
-// Завдання 1.2.7
+// 1.2.7
 function Truck(color, weight, avgSpeed, brand, model) {
     this.color = color;
     this.weight = weight;
     this.avgSpeed = avgSpeed;
     this.brand = brand;
     this.model = model;
-
-    this.trip = function () {
-        if (!this.driver) {
-            console.log("No driver assigned");
-        } else {
-            let message = Driver ${ this.driver.name };
-            message += this.driver.nightDriving ? " drives at night" : " does not drive at night";
-            message += and has ${ this.driver.experience } years of experience;
-            console.log(message);
-        }
-    };
 }
 
-// Завдання 1.2.8
-Truck.prototype.AssignDriver = function (name, nightDriving, experience) {
+// 1.2.8
+Truck.prototype.assignDriver = function(name, nightDriving, experience) {
     this.driver = {
         name: name,
         nightDriving: nightDriving,
@@ -64,117 +61,77 @@ Truck.prototype.AssignDriver = function (name, nightDriving, experience) {
     };
 };
 
-// Завдання 1.2.10
-var truck1 = new Truck("green", 3000, 60, "Volvo", "Model A");
-var truck2 = new Truck("yellow", 4000, 55, "MAN", "Model B");
+// 1.2.9
+Truck.prototype.trip = function() {
+    if (!this.driver) {
+        console.log("No driver assigned");
+    } else {
+        var message = "Driver " + this.driver.name;
+        if (this.driver.nightDriving) {
+            message += " drives at night";
+        } else {
+            message += " does not drive at night";
+        }
+        message += " and has " + this.driver.experience + " years of experience";
+        console.log(message);
+    }
+};
 
-truck1.AssignDriver("Ім'я Прізвище", true, 5);
-truck2.AssignDriver("Ім'я Прізвище", false, 3);
+// 1.2.10
+var truck1 = new Truck("green", 5000, 80, "Volvo", "VNL");
+var truck2 = new Truck("white", 4500, 85, "Scania", "R450");
+
+truck1.assignDriver("John Doe", true, 5);
+truck2.assignDriver("John Doe", false, 3);
 
 truck1.trip();
 truck2.trip();
 
-// Завдання 1.2.12-1.2.15
-class Square {
-    constructor(a) {
-        this.a = a;
-    }
 
-    static help() {
-        console.log("A square is a quadrilateral with all sides equal and all angles 90 degrees.");
-    }
-
-    length() {
-        console.log(`Length of sides: ${this.a * 4}`);
-    }
-
-    square() {
-        console.log(`Area: ${this.a * this.a}`);
-    }
-
-    info() {
-        console.log(`Square - Sides: ${this.a}, Angles: 90 degrees, Perimeter: ${this.a * 4}, Area: ${this.a * this.a}`);
-    }
-}
-
-// Завдання 1.2.16-1.2.17
-class Rectangle extends Square {
-    constructor(a, b) {
-        super(a);
-        this.b = b;
-    }
-
-    static help() {
-        console.log("A rectangle has opposite sides equal and all angles 90 degrees.");
-    }
-
-    length() {
-        console.log(`Perimeter: ${2 * (this.a + this.b)}`);
-    }
-
-    square() {
-        console.log(`Area: ${this.a * this.b}`);
-    }
-
-    info() {
-        console.log(`Rectangle - Sides: ${this.a} and ${this.b}, Angles: 90 degrees, Perimeter: ${2 * (this.a + this.b)}, Area: ${this.a * this.b}`);
-    }
-}
-
-// Завдання 1.2.18-1.2.19
-class Rhombus extends Square {
-    constructor(a, alpha, beta) {
-        super(a);
-        this.alpha = alpha;
-        this.beta = beta;
-    }
-
-    static help() {
-        console.log("A rhombus has all sides equal and opposite angles equal.");
-    }
-
-    length() {
-        console.log(`Perimeter: ${this.a * 4}`);
-    }
-
-    square() {
-        console.log(`Area: ${this.a * this.a * Math.sin((this.alpha * Math.PI) / 180)}`);
-    }
-
-    info() {
-        console.log(`Rhombus - Sides: ${this.a}, Angles: ${this.alpha} and ${this.beta}, Perimeter: ${this.a * 4}, Area: ${this.a * this.a * Math.sin((this.alpha * Math.PI) / 180)}`);
-    }
-}
-
-// Завдання 1.2.21
-class Parallelogram extends Rectangle {
-    constructor(a, b, alpha, beta) {
-        super(a, b);
-        this.alpha = alpha;
-        this.beta = beta;
-    }
-
-    static help() {
-        console.log("A parallelogram has opposite sides equal and opposite angles equal.");
-    }
-
-    info() {
-        console.log(`Parallelogram - Sides: ${this.a} and ${this.b}, Angles: ${this.alpha} and ${this.beta}, Perimeter: ${2 * (this.a + this.b)}, Area: ${this.a * this.b * Math.sin((this.alpha * Math.PI) / 180)}`);
-    }
-}
-
-// Виклик методів info та help для кожного класу
+// 1.2.23
 Square.help();
 Rectangle.help();
 Rhombus.help();
 Parallelogram.help();
 
-const square = new Square(4);
-const rectangle = new Rectangle(5, 10);
-const rhombus = new Rhombus(6, 120, 60);
-const parallelogram = new Parallelogram(7, 9, 110, 70);
+// 1.2.24
+const square = new Square(5);
+const rectangle = new Rectangle(4, 6);
+const rhombus = new Rhombus(5, 120, 60);
+const parallelogram = new Parallelogram(6, 8, 120, 60);
 
 square.info();
 rectangle.info();
 rhombus.info();
 parallelogram.info();
+
+// 1.2.26
+const defaultTriangle = Triangular();
+const customTriangle1 = Triangular(5, 12, 13);
+const customTriangle2 = Triangular(6, 8, 10);
+
+console.log("Default Triangle:", defaultTriangle);
+console.log("Custom Triangle 1:", customTriangle1);
+console.log("Custom Triangle 2:", customTriangle2);
+
+// 1.2.28
+const multiplyPiBy2 = PiMultiplier(2);
+const multiplyPiBy3Div2 = PiMultiplier(3/2);
+const dividePiBy2 = PiMultiplier(1/2);
+
+console.log("ПЂ multiplied by 2:", multiplyPiBy2());
+console.log("ПЂ multiplied by 3/2:", multiplyPiBy3Div2());
+console.log("ПЂ divided by 2:", dividePiBy2());
+
+
+const PaintBlue = Painter("Blue");
+const PaintRed = Painter("Red");
+const PaintYellow = Painter("Yellow");
+
+const object1 = { maxSpeed: 280, type: "Sportcar", color: "magenta" };
+const object2 = { maxSpeed: 180, type: "Truck", loadCapacity: 2400 };
+const object3 = { avgSpeed: 90, color: "purple", isCar: true };
+
+PaintBlue(object1);
+PaintRed(object2);
+PaintYellow(object3);

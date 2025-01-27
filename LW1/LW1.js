@@ -1,81 +1,70 @@
 function triangle(value1, type1, value2, type2) {
-
-    console.log("Інструкція:");
-    console.log("Використовуйте triangle(value1, type1, value2, type2), де value1 і value2 – це значення елементів трикутника (катет, кут, гіпотенуза), а type1 і type2 – їхні типи:");
-    console.log("- \"leg\" для катета");
-    console.log("- \"hypotenuse\" для гіпотенузи");
-    console.log("- \"adjacent angle\" для прилеглого кута");
-    console.log("- \"opposite angle\" для протилежного кута");
-    console.log("- \"angle\" для гострого кута\n");
-
+    console.log("Р†РЅСЃС‚СЂСѓРєС†С–С—:");
+    console.log("Р’РёРєРѕСЂРёСЃС‚РѕРІСѓР№С‚Рµ triangle(value1, type1, value2, type2), РґРµ value1 С– value2 вЂ“ С†Рµ Р·РЅР°С‡РµРЅРЅСЏ РµР»РµРјРµРЅС‚С–РІ С‚СЂРёРєСѓС‚РЅРёРєР° (РєР°С‚РµС‚, РєСѓС‚, РіС–РїРѕС‚РµРЅСѓР·Р°), Р° type1 С– type2 вЂ“ С—С…РЅС– С‚РёРїРё:");
+    console.log("- \"leg\" РґР»СЏ РєР°С‚РµС‚Р°");
+    console.log("- \"hypotenuse\" РґР»СЏ РіС–РїРѕС‚РµРЅСѓР·Рё");
+    console.log("- \"adjacent angle\" РґР»СЏ РїСЂРёР»РµРіР»РѕРіРѕ РєСѓС‚Р°");
+    console.log("- \"opposite angle\" РґР»СЏ РїСЂРѕС‚РёР»РµР¶РЅРѕРіРѕ РєСѓС‚Р°");
+    console.log("- \"angle\" РґР»СЏ РіРѕСЃС‚СЂРѕРіРѕ РєСѓС‚Р°\n");
 
     if (value1 <= 0 || value2 <= 0) {
-        console.log("Помилка: значення елементів трикутника повинні бути додатними.");
-        return "failed";
+        console.log("РџРѕРјРёР»РєР°: Р·РЅР°С‡РµРЅРЅСЏ РµР»РµРјРµРЅС‚С–РІ С‚СЂРёРєСѓС‚РЅРёРєР° РїРѕРІРёРЅРЅС– Р±СѓС‚Рё РґРѕРґР°С‚РЅРёРјРё.");
+        return { status: "failed", message: "Р—РЅР°С‡РµРЅРЅСЏ РµР»РµРјРµРЅС‚С–РІ С‚СЂРёРєСѓС‚РЅРёРєР° РїРѕРІРёРЅРЅС– Р±СѓС‚Рё РґРѕРґР°С‚РЅРёРјРё." };
     }
-
-    const toRadians = (degrees) => (degrees * Math.PI) / 180;
-    const toDegrees = (radians) => (radians * 180) / Math.PI;
 
     let a, b, c, alpha, beta;
 
-    if ((type1 === "leg" && type2 === "opposite angle") || (type1 === "opposite angle" && type2 === "leg")) {
-        const leg = type1 === "leg" ? value1 : value2;
-        alpha = type1 === "opposite angle" ? value1 : value2;
-        beta = 90 - alpha;
-        a = leg;
-        c = a / Math.sin(toRadians(alpha));
-        b = Math.sqrt(c ** 2 - a ** 2);
-    } else if ((type1 === "leg" && type2 === "adjacent angle") || (type1 === "adjacent angle" && type2 === "leg")) {
-        const leg = type1 === "leg" ? value1 : value2;
-        beta = type1 === "adjacent angle" ? value1 : value2;
-        alpha = 90 - beta;
-        b = leg;
-        c = b / Math.cos(toRadians(beta));
-        a = Math.sqrt(c ** 2 - b ** 2);
-    } else if ((type1 === "leg" && type2 === "hypotenuse") || (type1 === "hypotenuse" && type2 === "leg")) {
-        const leg = type1 === "leg" ? value1 : value2;
-        const hypotenuse = type1 === "hypotenuse" ? value1 : value2;
-
-        if (leg >= hypotenuse) {
-            console.log("Помилка: катет не може бути більшим або рівним гіпотенузі.");
-            return "failed";
+    if (type1 === "leg" && type2 === "hypotenuse") {
+        a = value1;
+        c = value2;
+        if (a >= c) {
+            console.log("РџРѕРјРёР»РєР°: РєР°С‚РµС‚ РЅРµ РјРѕР¶Рµ Р±СѓС‚Рё Р±С–Р»СЊС€РёРј Р°Р±Рѕ СЂС–РІРЅРёРј РіС–РїРѕС‚РµРЅСѓР·С–.");
+            return { status: "failed", message: "РљР°С‚РµС‚ РЅРµ РјРѕР¶Рµ Р±СѓС‚Рё Р±С–Р»СЊС€РёРј Р°Р±Рѕ СЂС–РІРЅРёРј РіС–РїРѕС‚РµРЅСѓР·С–." };
         }
-
-        a = leg;
-        c = hypotenuse;
-        b = Math.sqrt(c ** 2 - a ** 2);
-        alpha = toDegrees(Math.asin(a / c));
+        b = Math.sqrt(c * c - a * a);
+        alpha = Math.asin(a / c) * (180 / Math.PI);
         beta = 90 - alpha;
-    } else if ((type1 === "adjacent angle" && type2 === "hypotenuse") || (type1 === "hypotenuse" && type2 === "adjacent angle")) {
-        const hypotenuse = type1 === "hypotenuse" ? value1 : value2;
-        const adjacentAngle = type1 === "adjacent angle" ? value1 : value2;
-
-        c = hypotenuse;
-        beta = adjacentAngle;
-        alpha = 90 - beta;
-        b = c * Math.cos(toRadians(beta));
-        a = Math.sqrt(c ** 2 - b ** 2);
-    } else if ((type1 === "opposite angle" && type2 === "hypotenuse") || (type1 === "hypotenuse" && type2 === "opposite angle")) {
-        const hypotenuse = type1 === "hypotenuse" ? value1 : value2;
-        const oppositeAngle = type1 === "opposite angle" ? value1 : value2;
-
-        c = hypotenuse;
-        alpha = oppositeAngle;
-        beta = 90 - alpha;
-        a = c * Math.sin(toRadians(alpha));
-        b = Math.sqrt(c ** 2 - a ** 2);
     } else {
-        console.log("Помилка: невірно вказані типи аргументів. Перечитайте інструкцію та спробуйте знову.");
-        return "failed";
+        console.log("РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅР° РєРѕРјР±С–РЅР°С†С–СЏ С‚РёРїС–РІ.");
+        return { status: "failed", message: "РќРµРїС–РґС‚СЂРёРјСѓРІР°РЅР° РєРѕРјР±С–РЅР°С†С–СЏ С‚РёРїС–РІ." };
     }
 
-    console.log("Результати обчислень:");
-    console.log(`Катет a = ${a.toFixed(2)}`);
-    console.log(`Катет b = ${b.toFixed(2)}`);
-    console.log(`Гіпотенуза c = ${c.toFixed(2)}`);
-    console.log(`Кут alpha = ${alpha.toFixed(2)}°`);
-    console.log(`Кут beta = ${beta.toFixed(2)}°`);
+    console.log("Р РµР·СѓР»СЊС‚Р°С‚Рё РѕР±С‡РёСЃР»РµРЅСЊ:");
+    console.log(`РљР°С‚РµС‚ a = ${a.toFixed(2)}`);
+    console.log(`РљР°С‚РµС‚ b = ${b.toFixed(2)}`);
+    console.log(`Р“С–РїРѕС‚РµРЅСѓР·Р° c = ${c.toFixed(2)}`);
+    console.log(`РљСѓС‚ alpha = ${alpha.toFixed(2)}В°`);
+    console.log(`РљСѓС‚ beta = ${beta.toFixed(2)}В°`);
 
-    return "success";
+    return {
+        status: "success",
+        results: {
+            a: a.toFixed(2),
+            b: b.toFixed(2),
+            c: c.toFixed(2),
+            alpha: alpha.toFixed(2),
+            beta: beta.toFixed(2)
+        }
+    };
+}
+
+function calculateTriangle() {
+    const value1 = parseFloat(document.getElementById('value1').value);
+    const type1 = document.getElementById('type1').value;
+    const value2 = parseFloat(document.getElementById('value2').value);
+    const type2 = document.getElementById('type2').value;
+
+    const result = triangle(value1, type1, value2, type2);
+    let displayText = '';
+    if (result.status === "failed") {
+        displayText = result.message;
+    } else {
+        displayText = `Р РµР·СѓР»СЊС‚Р°С‚Рё:<br>
+                       РљР°С‚РµС‚ a = ${result.results.a}<br>
+                       РљР°С‚РµС‚ b = ${result.results.b}<br>
+                       Р“С–РїРѕС‚РµРЅСѓР·Р° c = ${result.results.c}<br>
+                       РљСѓС‚ alpha = ${result.results.alpha}В°<br>
+                       РљСѓС‚ beta = ${result.results.beta}В°`;
+    }
+    document.getElementById('result').innerHTML = displayText;
 }

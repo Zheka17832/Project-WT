@@ -7,23 +7,22 @@ class Rectangle extends Square {
     }
 
     static help() {
-        console.log("Прямокутник — це чотирикутник, протилежні сторони якого рівні, а всі кути дорівнюють 90 градусам.");
+        console.log("A rectangle is a quadrilateral with four right angles. It has opposite sides that are equal in length.");
     }
 
     length() {
-        return 2 * (this.a + this.b);
+        console.log(`The perimeter of the rectangle is ${2 * (this.a + this.b)}`);
     }
 
     square() {
-        return this.a * this.b;
+        console.log(`The area of the rectangle is ${this.a * this.b}`);
     }
 
     info() {
-        console.log(`Інформація про прямокутник:
-    Довжини сторін: ${this.a}, ${this.b}, ${this.a}, ${this.b}
-    Величини кутів: 90°
-    Сума довжин сторін: ${2 * (this.a + this.b)}
-    Площа: ${this.a * this.b});`);
+        console.log(`Length of the rectangle is ${this.a} and width is ${this.b}`);
+        console.log(`Each angle of the rectangle is 90 degrees`);
+        this.length();
+        this.square();
     }
 }
 

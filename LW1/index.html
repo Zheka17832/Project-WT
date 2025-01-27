@@ -1,11 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>triangle</title>
+    <title>Triangle Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="LW1.js"></script>
+<div class="container">
+    <h1>Triangle Calculator</h1>
+    <form id="triangleForm">
+        <input type="number" id="value1" placeholder="Enter first value" required>
+        <select id="type1">
+            <option value="leg">Leg</option>
+            <option value="hypotenuse">Hypotenuse</option>
+            <option value="adjacent angle">Adjacent Angle</option>
+            <option value="opposite angle">Opposite Angle</option>
+            <option value="angle">Angle</option>
+        </select>
+        <input type="number" id="value2" placeholder="Enter second value" required>
+        <select id="type2">
+            <option value="leg">Leg</option>
+            <option value="hypotenuse">Hypotenuse</option>
+            <option value="adjacent angle">Adjacent Angle</option>
+            <option value="opposite angle">Opposite Angle</option>
+            <option value="angle">Angle</option>
+        </select>
+        <button type="button" onclick="calculateTriangle()">Calculate</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script src="LW1.js"></script>
 </body>
 </html>
